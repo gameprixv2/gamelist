@@ -241,29 +241,42 @@ background:#F5C542;
 =========================== */
 
 .game-card{
-
+    position:relative;
     background:#161c26;
     border:1px solid #5A4720;
     border-radius:18px;
-
     overflow:hidden;
-
     width:100%;
-
-    transition:.25s;
-
+    cursor:pointer;
+    transition:all .25s ease;
 }
 
 .game-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:0 10px 30px rgba(0,0,0,.35);
-
-border-color:#D4AF37;
-
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+    border-color:#D4AF37;
 }
 
+.game-card.added{
+    border:2px solid #FFD95C;
+    background:linear-gradient(180deg,#1b2230,#161c26);
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(255,217,92,.18);
+}
+
+.game-card.added::after{
+    content:"✓ Added";
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#FFD95C;
+    color:#111;
+    font-size:11px;
+    font-weight:700;
+    padding:5px 10px;
+    border-radius:999px;
+    z-index:2;
+}
 .game-card img{
 
     width:100%;
@@ -314,41 +327,6 @@ margin-bottom:15px;
 
 }
 
-.add-btn{
-    padding:8px 14px;
-    font-size:13px;
-    background:#ffffff;
-    color:#111;
-    border:1px solid #B8860B;
-    border-radius:8px;
-    font-weight:700;
-    cursor:pointer;
-    transition:all .25s ease;
-}
-
-.add-btn:hover{
-    background:linear-gradient(180deg,#FFD95C,#D4AF37);
-    color:#111;
-    border-color:#B8860B;
-    box-shadow:0 6px 18px rgba(212,175,55,.35);
-}
-
-.add-btn:active{
-    transform:scale(.97);
-}
-
-.add-btn.added{
-    background:linear-gradient(180deg,#FFD95C,#D4AF37) !important;
-    color:#111 !important;
-    border:1px solid #B8860B !important;
-    box-shadow:0 4px 12px rgba(212,175,55,.35);
-    font-weight:700;
-}
-
-.add-btn.added:hover{
-    background:linear-gradient(180deg,#FFE27A,#E6B800) !important;
-    box-shadow:0 6px 18px rgba(212,175,55,.45);
-}
 
 /* ===============================
    SELECTED GAMES POPUP
@@ -490,7 +468,7 @@ header{
 .drive-grid{
 
     display:flex;
-    gap:10px;
+    gap:8px;
 
 }
 
@@ -503,7 +481,7 @@ header{
 
     padding:8px 6px;
 
-    min-height:54px;
+    min-height:52px;
 
     border-radius:12px;
 }
@@ -558,11 +536,21 @@ header{
     font-size:10px;
 }
 
+.game-size{
+    font-size:10px;
+}
+
+.game-card button{
+    height:34px;
+    font-size:12px;
+    border-radius:8px;
+}
+
 .bottom-bar{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    padding:10px;
+    gap:8px;
+    padding:8px;
     align-items:stretch;
 }
 
@@ -573,33 +561,33 @@ header{
     gap:10px;
     width:100%;
     min-width:0;
-    padding:6px 8px;
+    padding:5px 8px;
     background:#161c26;
-    border-radius:12px;
+    border-radius:10px;
     border:1px solid rgba(255,217,92,.08);
 }
 
 .status-icon{
-    width:34px;
-    height:34px;
+    width:30px;
+    height:30px;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:18px;
+    font-size:16px;
     border-radius:10px;
     background:#202838;
     flex-shrink:0;
 }
 
 .status-title{
-    font-size:11px;
+    font-size:10px;
     color:#9AA4B5;
     text-transform:uppercase;
     letter-spacing:.5px;
 }
 
 .status-card h3{
-    font-size:20px;
+    font-size:17px;
     line-height:1;
     font-weight:700;
     color:#FFD95C;
@@ -619,12 +607,19 @@ header{
 .bottom-bar button{
     grid-column:1 / -1;
     width:100%;
-    height:42px;
-    font-size:16px;
-    font-weight:700;
-    border-radius:12px;
-}
+    height:36px;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+
+    font-size:15px;
+    font-weight:700;
+    line-height:1;
+
+    border-radius:10px;
+}
 .popup{
     width:96%;
     max-width:500px;
@@ -678,15 +673,43 @@ header{
 /* Drive Section */
 
 .drive-section h2{
-    font-size:24px;
+    font-size:20px;
 }
 
 .drive-section p{
-    font-size:14px;
-    margin-bottom:14px;
+    font-size:13px;
+    margin-bottom:10px;
 }
 
 .drive-section{
-    padding:10px;
+    padding:8px;
+}
+
+.game-tabs{
+    display:flex;
+    gap:10px;
+    margin:18px 0;
+}
+
+.game-tabs button{
+    flex:1;
+    padding:10px 0;
+    background:#161c26;
+    color:#fff;
+    border:1px solid #5A4720;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.25s;
+}
+
+.game-tabs button:hover{
+    border-color:#D4AF37;
+}
+
+.game-tabs button.active{
+    background:linear-gradient(180deg,#FFD95C,#D4AF37);
+    color:#111;
+    border-color:#D4AF37;
 }
 
