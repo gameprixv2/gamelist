@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GamePrix</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+🎮 GamePrix
+</div>
+
+<div class="search-box">
+<input
+type="text"
+id="search"
+placeholder="Search games...">
+</div>
+
+</header>
+
+<section class="drive-section">
+
+<h2>Choose Your Drive Size</h2>
+
+<p>Select the perfect storage for your game collection.</p>
+
+<div class="drive-grid">
+
+<div class="drive-card"
+     data-size="460"
+     data-label="500GB">
+
+    <h3>500GB</h3>
+    <span>460GB usable</span>
+
+</div>
+
+<div class="drive-card"
+     data-size="920"
+     data-label="1TB">
+
+    <h3>1TB</h3>
+    <span>920GB usable</span>
+
+</div>
+
+<div class="drive-card selected"
+     data-size="1850"
+     data-label="2TB">
+
+    <h3>2TB</h3>
+    <span>1850GB usable</span>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="games-section">
+
+<h2>All Games</h2>
+
+<div id="gameGrid" class="game-grid"></div>
+
+</section>
+
+<div class="bottom-bar">
+
+    <div class="status-card">
+
+        <div class="status-icon">💽</div>
+
+        <div>
+            <span class="status-title">Selected Drive</span>
+            <h3 id="selectedDrive">2TB</h3>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="status-card">
+
+        <div class="status-icon">📊</div>
+
+        <div>
+            <span class="status-title">Used Space</span>
+            <h3 id="usedSpace">0 GB</h3>
+            <small id="usedPercent">0%</small>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="status-card">
+
+        <div class="status-icon">💾</div>
+
+        <div>
+            <span class="status-title">Remaining</span>
+            <h3 id="remainingSpace">1850 GB</h3>
+            <small id="remainingPercent">100%</small>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="status-card">
+
+        <div class="status-icon">🎮</div>
+
+        <div>
+            <span class="status-title">Games Added</span>
+            <h3 id="gameCount">0</h3>
+        </div>
+
+    </div>
+
+    <button id="selectedGamesBtn">
+        📋 Selected Games
+    </button>
+
+</div>
+
+<div id="selectedPopup" class="popup hidden">
+
+<div class="popup-header">
+
+<h2>Selected Games</h2>
+
+<button id="closePopup">
+
+✕
+
+</button>
+
+</div>
+
+<div id="selectedList">
+
+</div>
+
+<div class="popup-footer">
+
+<p>
+
+Total:
+<span id="popupTotal">0GB</span>
+
+</p>
+
+<button id="copyBtn">
+
+📋 Copy to Clipboard
+
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+/* GamePrix V2 - Step 2 (Part 1) */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+body{
+background:#0b0f14;
+color:#fff;
+padding-bottom:120px;
+}
+header{
+position:sticky;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 35px;
+background:#10151d;
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:999;
+}
+.logo{
+font-size:40px;
+font-weight:700;
+color:#7CFC00;
+}
+.search-box{width:520px;}
+.search-box input{
+width:100%;
+padding:16px 22px;
+border-radius:14px;
+background:#171d27;
+border:1px solid #303949;
+color:#fff;
+font-size:17px;
+outline:none;
+}
+.filters{
+display:flex;
+gap:15px;
+padding:25px 35px;
+}
+.filters button{
+padding:13px 28px;
+background:#171d27;
+border:1px solid #2c3442;
+color:#fff;
+border-radius:30px;
+cursor:pointer;
+}
+.filters .active{
+background:#7CFC00;
+color:#000;
+font-weight:700;
+}
+.drive-section{
+margin:0 35px;
+padding:30px;
+border-radius:18px;
+background:#11161f;
+border:1px solid #2a313d;
+}
+.drive-section h2{
+color:#7CFC00;
+font-size:36px;
+margin-bottom:10px;
+}
+.drive-section p{
+color:#bcbcbc;
+margin-bottom:25px;
+}
+.drive-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+.drive-card{
+padding:30px;
+border-radius:18px;
+background:#171d27;
+border:2px solid #313949;
+}
+.drive-card.selected{
+border-color:#7CFC00;
+}
+.games-section{
+padding:35px;
+}
+.game-grid{
+    display:grid;
+    grid-template-columns:repeat(8, 1fr);
+    gap:15px;
+}
+.bottom-bar{
+
+position:fixed;
+
+left:0;
+right:0;
+bottom:0;
+
+display:flex;
+align-items:center;
+gap:28px;
+
+padding:18px 30px;
+
+background:#0f141c;
+
+border-top:1px solid #2b3443;
+
+box-shadow:0 -8px 25px rgba(0,0,0,.45);
+
+z-index:9999;
+
+}
+
+.status-card{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+min-width:170px;
+
+}
+
+.status-icon{
+
+width:42px;
+height:42px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+
+background:#1b2330;
+
+border-radius:12px;
+
+}
+
+.status-title{
+
+display:block;
+
+font-size:13px;
+
+color:#9ea7b7;
+
+margin-bottom:3px;
+
+}
+
+.status-card h3{
+
+font-size:30px;
+
+color:#7CFC00;
+
+font-weight:700;
+
+line-height:1;
+
+}
+
+.status-card small{
+
+font-size:13px;
+
+color:#9ea7b7;
+
+}
+
+.divider{
+
+width:1px;
+
+height:55px;
+
+background:#2d3646;
+
+}
+
+#selectedGamesBtn{
+
+margin-left:auto;
+
+padding:16px 34px;
+
+background:#7CFC00;
+
+color:#000;
+
+font-size:18px;
+
+font-weight:700;
+
+border:none;
+
+border-radius:14px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+#selectedGamesBtn:hover{
+
+transform:translateY(-2px);
+
+background:#92ff1d;
+
+}
+.popup{display:none;}
+.hidden{display:none;}
+
+
+/* ===========================
+   GAME CARDS
+=========================== */
+
+.game-card{
+
+    background:#161c26;
+    border:1px solid #2f3745;
+    border-radius:18px;
+
+    overflow:hidden;
+
+    width:100%;
+
+    transition:.25s;
+
+}
+
+.game-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+border-color:#7CFC00;
+
+}
+
+.game-card img{
+
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+    object-position:center;
+
+    display:block;
+
+    border-radius:18px 18px 0 0;
+
+}
+.game-info{
+
+padding:12px;
+
+}
+
+.game-info h3{
+    font-size:14px;
+    line-height:1.3;
+    margin-bottom:8px;
+
+}
+
+.genres{
+
+display:flex;
+
+gap:8px;
+
+flex-wrap:wrap;
+
+margin-bottom:15px;
+
+}
+
+.genres span{
+    font-size:10px;
+    padding:4px 8px;
+
+}
+
+.size{
+    font-size:14px;
+    margin-bottom:10px
+
+}
+
+.add-btn{
+    padding:8px;
+    font-size:13px;
+
+}
+
+.add-btn:hover{
+
+background:#8cff1a;
+
+}
+
+.add-btn.added{
+    background:#27ae60 !important;
+    color:#ffffff !important;
+}
+
+/* ===============================
+   SELECTED GAMES POPUP
+=============================== */
+
+.popup{
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:520px;
+
+max-height:650px;
+
+background:#161c26;
+
+border:1px solid #2f3745;
+
+border-radius:18px;
+
+display:none;
+
+flex-direction:column;
+
+overflow:hidden;
+
+box-shadow:0 15px 40px rgba(0,0,0,.5);
+
+z-index:9999;
+
+}
+
+.popup-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 20px;
+
+background:#11161f;
+
+}
+
+.popup-header h2{
+
+font-size:24px;
+
+}
+
+.popup-header button{
+
+background:red;
+
+color:white;
+
+border:none;
+
+padding:8px 14px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+#selectedList{
+
+padding:20px;
+
+overflow-y:auto;
+
+flex:1;
+
+}
+
+.popup-footer{
+
+padding:20px;
+
+background:#11161f;
+
+}
+
+#copyBtn{
+
+width:100%;
+
+padding:14px;
+
+background:#7CFC00;
+
+border:none;
+
+border-radius:12px;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
