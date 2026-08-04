@@ -22,17 +22,30 @@ border-bottom:1px solid rgba(255,255,255,.08);
 z-index:999;
 }
 .logo{
-font-size:40px;
-font-weight:700;
-color:#7CFC00;
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+    margin-right:25px;
+}
+
+.logo img{
+    height:110px;
+    width:auto;
+    display:block;
+    object-fit:contain;
+    transition:.3s ease;
+}
+
+.logo img:hover{
+    transform:scale(1.03);
 }
 .search-box{width:520px;}
 .search-box input{
 width:100%;
-padding:16px 22px;
+padding:20px 26px;
 border-radius:14px;
 background:#171d27;
-border:1px solid #303949;
+border:1px solid #5A4720;
 color:#fff;
 font-size:17px;
 outline:none;
@@ -51,7 +64,7 @@ border-radius:30px;
 cursor:pointer;
 }
 .filters .active{
-background:#7CFC00;
+background:#D4AF37;
 color:#000;
 font-weight:700;
 }
@@ -63,7 +76,7 @@ background:#11161f;
 border:1px solid #2a313d;
 }
 .drive-section h2{
-color:#7CFC00;
+color:#D4AF37;
 font-size:36px;
 margin-bottom:10px;
 }
@@ -83,7 +96,7 @@ background:#171d27;
 border:2px solid #313949;
 }
 .drive-card.selected{
-border-color:#7CFC00;
+border-color:#D4AF37;
 }
 .games-section{
 padding:35px;
@@ -162,7 +175,7 @@ margin-bottom:3px;
 
 font-size:30px;
 
-color:#7CFC00;
+color:#D4AF37;
 
 font-weight:700;
 
@@ -194,7 +207,7 @@ margin-left:auto;
 
 padding:16px 34px;
 
-background:#7CFC00;
+background:#D4AF37;
 
 color:#000;
 
@@ -216,7 +229,7 @@ transition:.25s;
 
 transform:translateY(-2px);
 
-background:#92ff1d;
+background:#F5C542;
 
 }
 .popup{display:none;}
@@ -230,7 +243,7 @@ background:#92ff1d;
 .game-card{
 
     background:#161c26;
-    border:1px solid #2f3745;
+    border:1px solid #5A4720;
     border-radius:18px;
 
     overflow:hidden;
@@ -247,7 +260,7 @@ transform:translateY(-8px);
 
 box-shadow:0 10px 30px rgba(0,0,0,.35);
 
-border-color:#7CFC00;
+border-color:#D4AF37;
 
 }
 
@@ -302,20 +315,39 @@ margin-bottom:15px;
 }
 
 .add-btn{
-    padding:8px;
+    padding:8px 14px;
     font-size:13px;
-
+    background:#ffffff;
+    color:#111;
+    border:1px solid #B8860B;
+    border-radius:8px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all .25s ease;
 }
 
 .add-btn:hover{
+    background:linear-gradient(180deg,#FFD95C,#D4AF37);
+    color:#111;
+    border-color:#B8860B;
+    box-shadow:0 6px 18px rgba(212,175,55,.35);
+}
 
-background:#8cff1a;
-
+.add-btn:active{
+    transform:scale(.97);
 }
 
 .add-btn.added{
-    background:#27ae60 !important;
-    color:#ffffff !important;
+    background:linear-gradient(180deg,#FFD95C,#D4AF37) !important;
+    color:#111 !important;
+    border:1px solid #B8860B !important;
+    box-shadow:0 4px 12px rgba(212,175,55,.35);
+    font-weight:700;
+}
+
+.add-btn.added:hover{
+    background:linear-gradient(180deg,#FFE27A,#E6B800) !important;
+    box-shadow:0 6px 18px rgba(212,175,55,.45);
 }
 
 /* ===============================
@@ -338,7 +370,7 @@ max-height:650px;
 
 background:#161c26;
 
-border:1px solid #2f3745;
+border:1px solid #5A4720;
 
 border-radius:18px;
 
@@ -414,7 +446,7 @@ width:100%;
 
 padding:14px;
 
-background:#7CFC00;
+background:#D4AF37;
 
 border:none;
 
@@ -426,5 +458,235 @@ font-weight:700;
 
 cursor:pointer;
 
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width:768px){
+
+header{
+    flex-direction:column;
+    align-items:stretch;
+    padding:15px;
+    gap:15px;
+}
+
+.logo{
+    justify-content:center;
+    margin-right:0;
+}
+
+.logo img{
+    height:85px;
+}
+
+.search-box{
+    width:100%;
+    max-width:none;
+}
+
+.drive-grid{
+
+    display:flex;
+    gap:10px;
+
+}
+
+.drive-card{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+
+    padding:8px 6px;
+
+    min-height:54px;
+
+    border-radius:12px;
+}
+
+.drive-card span{
+
+    display:none;
+
+}
+
+.drive-card h3{
+
+    font-size:16px;
+    margin:0;
+
+}
+
+.drive-card h3::before{
+
+    content:"💽";
+
+    margin-right:8px;
+
+    font-size:15px;
+
+}
+.filters{
+    overflow-x:auto;
+    white-space:nowrap;
+    padding:15px;
+}
+
+.game-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding:12px;
+}
+
+.game-card img{
+    height:165px;
+}
+
+.game-info{
+    padding:10px;
+}
+
+.game-title{
+    font-size:13px;
+}
+
+.genres{
+    font-size:10px;
+}
+
+.bottom-bar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    padding:10px;
+    align-items:stretch;
+}
+
+
+.status-card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    min-width:0;
+    padding:6px 8px;
+    background:#161c26;
+    border-radius:12px;
+    border:1px solid rgba(255,217,92,.08);
+}
+
+.status-icon{
+    width:34px;
+    height:34px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    border-radius:10px;
+    background:#202838;
+    flex-shrink:0;
+}
+
+.status-title{
+    font-size:11px;
+    color:#9AA4B5;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+.status-card h3{
+    font-size:20px;
+    line-height:1;
+    font-weight:700;
+    color:#FFD95C;
+    margin-top:2px;
+}
+
+.status-card small{
+    display:none;
+}
+
+.bottom-bar .divider{
+    display:none;
+}
+
+.popup-btn,
+.selected-btn,
+.bottom-bar button{
+    grid-column:1 / -1;
+    width:100%;
+    height:42px;
+    font-size:16px;
+    font-weight:700;
+    border-radius:12px;
+}
+
+.popup{
+    width:96%;
+    max-width:500px;
+    max-height:90vh;
+}
+
+.popup-header{
+    padding:15px;
+}
+
+.selected-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.selected-item span{
+    flex:1;
+    min-width:0;
+}
+
+.selected-item button{
+    width:34px;
+    height:34px;
+    min-width:34px;
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.popup-total{
+    font-size:20px;
+    font-weight:700;
+    color:#FFD95C;
+    margin-top:18px;
+}
+
+.popup-body{
+    padding:15px;
+    padding-bottom:30px;
+    overflow-y:auto;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+}
+
+/* Drive Section */
+
+.drive-section h2{
+    font-size:24px;
+}
+
+.drive-section p{
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+.drive-section{
+    padding:10px;
 }
 
