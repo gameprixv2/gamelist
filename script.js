@@ -2,7 +2,7 @@
 // GAMEPRIX V2
 // =========================
 
-const games = [
+const allGames = [
 
 { name: "007 FIRST LIGHT", genre: ["Action"], size: 54, img: "https://upload.wikimedia.org/wikipedia/en/2/2b/007_First_Light_%282026%29_cover.jpg" },
 
@@ -180,15 +180,36 @@ const games = [
 
 ];
 
+const lowEndGames = [
+
+{ name: "AGE OF EMPIRES 2 AGE OF KINGS", genre: ["Strategy"], size: 0.334, img: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png/250px-Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png" },
+
+{ name: "ASSASSIN'S CREED - 1", genre: ["Action", "Adventure"], size: 7, img: "https://upload.wikimedia.org/wikipedia/en/5/52/Assassin%27s_Creed.jpg" },
+
+{ name: "ASSASSIN'S CREED - 2", genre: ["Action", "Adventure"], size: 6, img: "https://upload.wikimedia.org/wikipedia/en/7/77/Assassins_Creed_2_Box_Art.JPG" },
+
+];
+
 const gameGrid=document.getElementById("gameGrid");
 
-games.forEach(game=>{
+function loadGames(gameList){
 
-const card=document.createElement("div");
+    gameGrid.innerHTML="";
 
-card.className="game-card";
+    gameList.forEach(game=>{
 
-card.innerHTML=`
+        const card=document.createElement("div");
+
+        card.className="game-card";
+
+        if (selectedGames.includes(game.name)) {
+             card.classList.add("added");
+        }
+
+        card.dataset.game=game.name;
+        card.dataset.size=game.size;
+
+        card.innerHTML=`
 
 <img src="${game.img}">
 
@@ -204,17 +225,71 @@ ${game.genre.map(g=>`<span>${g}</span>`).join("")}
 
 <p class="size">${game.size} GB</p>
 
-<button class="add-btn" data-game="${game.name}" data-size="${game.size}">
-
-+ ADD
-
-</button>
-
 </div>
 
 `;
 
-gameGrid.appendChild(card);
+card.addEventListener("click", function(){
+
+    const size = Number(this.dataset.size);
+    const name = this.dataset.game;
+
+    if(this.classList.contains("added")){
+
+        this.classList.remove("added");
+
+        usedSpace -= size;
+        selectedGames = selectedGames.filter(game => game !== name);
+
+    }else{
+
+        if(usedSpace + size > driveSize){
+
+            alert("Not enough storage!");
+            return;
+
+        }
+
+        this.classList.add("added");
+
+        usedSpace += size;
+        selectedGames.push(name);
+
+    }
+
+    updateStorage();
+
+});
+
+        gameGrid.appendChild(card);
+
+    });
+
+}
+
+const allBtn = document.getElementById("allBtn");
+const lowBtn = document.getElementById("lowBtn");
+
+allBtn.classList.add("active");
+
+allBtn.addEventListener("click", () => {
+
+    allBtn.classList.add("active");
+    lowBtn.classList.remove("active");
+
+    document.getElementById("gameTitle").textContent = "All Games";
+
+    loadGames(allGames);
+
+});
+
+lowBtn.addEventListener("click", () => {
+
+    lowBtn.classList.add("active");
+    allBtn.classList.remove("active");
+
+    document.getElementById("gameTitle").textContent = "Low End Games";
+    loadGames(lowEndGames);
 
 });
 
@@ -258,7 +333,7 @@ document.getElementById("remainingPercent").textContent =
 
     selectedGames.forEach(name=>{
 
-        const game = games.find(g=>g.name===name);
+        const game = allGames.find(g=>g.name===name);
 
         if(!game) return;
 
@@ -286,47 +361,8 @@ document.getElementById("remainingPercent").textContent =
 
 }
 
-document.querySelectorAll(".add-btn").forEach(button=>{
-
-    button.addEventListener("click",function(){
-
-        const size = Number(this.dataset.size);
-        const name = this.dataset.game;
-
-        if(this.classList.contains("added")){
-
-            this.classList.remove("added");
-            this.textContent = "+ ADD";
-
-            usedSpace -= size;
-
-            selectedGames = selectedGames.filter(game=>game!==name);
-
-        }else{
-
-            if(usedSpace + size > driveSize){
-
-                alert("Not enough storage!");
-                return;
-
-            }
-
-            this.classList.add("added");
-            this.textContent = "✔ ADDED";
-
-            usedSpace += size;
-
-            selectedGames.push(name);
-
-        }
-
-        updateStorage();
-
-    });
-
-});
-
 updateStorage();
+
 
 // ===============================
 // SELECTED GAMES POPUP
@@ -368,7 +404,7 @@ message += "🎮 Selected Games\n\n";
 
 selectedGames.forEach((name,index)=>{
 
-    const game = games.find(g=>g.name===name);
+    const game = allGames.find(g=>g.name===name);
 
     if(game){
         message += (index+1) + ". " + game.name + " — " + game.size + " GB\n";
@@ -479,6 +515,7 @@ searchInput.addEventListener("keyup", function () {
 });
 
 
+loadGames(allGames);
 
 
 
