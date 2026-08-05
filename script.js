@@ -997,6 +997,8 @@ card.addEventListener("click", function(){
     "Choose a larger drive or remove some games.",
     "error"
 );
+
+console.log("Storage limit reached");
 return;
 
     }
@@ -1171,6 +1173,8 @@ closePopup.addEventListener("click",()=>{
 const copyBtn = document.getElementById("copyBtn");
 
 copyBtn.addEventListener("click", () => {
+
+console.log("Copy button clicked");
 
     let message = "";
 message += "🎮 GAMEPRIX GAME ORDER\n";
