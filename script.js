@@ -142,6 +142,8 @@ const allGames = [
 
 { name: "CALL OF DUTY INFINITE WARFARE", size: 54.1, genre: ["FPS","Sci-Fi"], img: "https://upload.wikimedia.org/wikipedia/en/8/87/Call_of_Duty_Infinite_Warfare_cover.jpg" },
 
+{ name: "CALL OF DUTY MODERN WARFARE 2", size: 12, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/5/52/Call_of_Duty_Modern_Warfare_2_%282009%29_cover.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" },
+
 { name: "CALL OF DUTY MODERN WARFARE 2 CAMPAIGN REMASTERED", size: 58.4, genre: ["FPS","Action"], img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c4c1bfd6-740f-4577-a3d0-0cb5b71fb2df/dghcrku-9ddee17d-91fc-4ca3-b9a3-adb049ebb96f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M0YzFiZmQ2LTc0MGYtNDU3Ny1hM2QwLTBjYjViNzFmYjJkZlwvZGdoY3JrdS05ZGRlZTE3ZC05MWZjLTRjYTMtYjlhMy1hZGIwNDllYmI5NmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.nBKcqrsYvn4BxOhJDWUSLH631O0essCjgyB0bd4vUDw" },
 
 { name: "CALL OF DUTY MODERN WARFARE 3", size: 17.1, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/b/bf/Call_of_Duty_Modern_Warfare_3_box_art.png" },
@@ -764,6 +766,8 @@ const lowEndGames = [
 
 { name: "CALL OF DUTY - BLACK OPS 2", size: 22.2, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Call_of_Duty_Black_Ops_II_box_artwork.png/250px-Call_of_Duty_Black_Ops_II_box_artwork.png" },
 
+{ name: "CALL OF DUTY MODERN WARFARE 2", size: 12, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/5/52/Call_of_Duty_Modern_Warfare_2_%282009%29_cover.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" },
+
 { name: "CALL OF DUTY MODERN WARFARE 3", size: 17.1, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/b/bf/Call_of_Duty_Modern_Warfare_3_box_art.png" },
 
 { name: "CALL OF DUTY MODERN WARFARE 4", size: 5.56, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/5/5f/Call_of_Duty_4_Modern_Warfare.jpg" },
@@ -980,26 +984,28 @@ card.addEventListener("click", function(){
 
     if(this.classList.contains("added")){
 
-        this.classList.remove("added");
+    this.classList.remove("added");
 
-        usedSpace -= size;
-        selectedGames = selectedGames.filter(game => game !== name);
+    selectedGames = selectedGames.filter(g => g !== name);
 
-    }else{
+}else{
 
-        if(usedSpace + size > driveSize){
+    if(usedSpace + size > driveSize){
 
-            alert("Not enough storage!");
-            return;
-
-        }
-
-        this.classList.add("added");
-
-        usedSpace += size;
-        selectedGames.push(name);
+        showToast(
+    "❌ Not enough storage!",
+    "Choose a larger drive or remove some games.",
+    "error"
+);
+return;
 
     }
+
+    this.classList.add("added");
+
+    selectedGames.push(name);
+
+}
 
     updateStorage();
 
@@ -1045,29 +1051,39 @@ let driveSize = 1850;
 let usedSpace = 0;
 let selectedGames = [];
 
+// ===============================
+// TOAST NOTIFICATION
+// ===============================
+
+const toast = document.getElementById("toast");
+
+function showToast(message, sub = "", type = "success"){
+
+    // Reset previous classes
+    toast.className = "toast";
+
+    // Add success or error class
+    toast.classList.add(type);
+
+    toast.innerHTML = `
+        ${message}
+        <small>${sub}</small>
+    `;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+
+}
+
 const usedSpaceText = document.getElementById("usedSpace");
 const remainingText = document.getElementById("remainingSpace");
 const gameCountText = document.getElementById("gameCount");
 
 function updateStorage(){
 
-const remaining = driveSize - usedSpace;
-
-const usedPercent = driveSize > 0
-    ? (usedSpace / driveSize) * 100
-    : 0;
-
-const remainingPercent = 100 - usedPercent;
-
-usedSpaceText.textContent = usedSpace.toFixed(1) + " GB";
-remainingText.textContent = remaining.toFixed(1) + " GB";
-gameCountText.textContent = selectedGames.length;
-
-document.getElementById("usedPercent").textContent =
-    usedPercent.toFixed(0) + "%";
-
-document.getElementById("remainingPercent").textContent =
-    remainingPercent.toFixed(0) + "%";
 
     const list = document.getElementById("selectedList");
 
@@ -1090,19 +1106,39 @@ document.getElementById("remainingPercent").textContent =
 
     <strong>${game.size} GB</strong>
 
-    <button class="remove-game"
-        data-name="${game.name}"
-        data-size="${game.size}">
-        ❌
-    </button>
+    <button class="remove-btn"
+    data-name="${game.name}"
+    data-size="${game.size}">
+    ✕
+
+</button>
 
 </div>
 `;
 
     });
 
-    document.getElementById("popupTotal").textContent = total + "GB";
+    usedSpace = total;
 
+const remaining = driveSize - usedSpace;
+
+const usedPercent = driveSize > 0
+    ? (usedSpace / driveSize) * 100
+    : 0;
+
+const remainingPercent = 100 - usedPercent;
+
+document.getElementById("usedPercent").textContent =
+    usedPercent.toFixed(0) + "%";
+
+document.getElementById("remainingPercent").textContent =
+    remainingPercent.toFixed(0) + "%";
+
+usedSpaceText.textContent = usedSpace.toFixed(1) + " GB";
+remainingText.textContent = remaining.toFixed(1) + " GB";
+gameCountText.textContent = selectedGames.length;
+
+    document.getElementById("popupTotal").textContent = total + "GB";
 }
 
 updateStorage();
@@ -1160,9 +1196,26 @@ message += "📦 Total Size: " + usedSpace + " GB\n\n";
 message += "Thank you for choosing GamePrix!\n";
 message += "Please send this message to our Facebook Page.";
 
-    navigator.clipboard.writeText(message);
+    navigator.clipboard.writeText(message)
+.then(() => {
 
-    alert("Game list copied to clipboard!");
+    showToast(
+        "✅ Order copied!",
+        "Open Messenger and paste your order."
+    );
+
+})
+.catch(err => {
+
+    console.error(err);
+
+    showToast(
+        "❌ Copy failed!",
+        "Clipboard is unavailable.",
+        "error"
+    );
+
+});
 });
 
 // ===============================
@@ -1171,25 +1224,19 @@ message += "Please send this message to our Facebook Page.";
 
 document.addEventListener("click", function(e){
 
-    if(!e.target.classList.contains("remove-game")) return;
+    if(!e.target.classList.contains("remove-btn")) return;
 
     const name = e.target.dataset.name;
-    const size = Number(e.target.dataset.size);
 
     // Remove from selected list
     selectedGames = selectedGames.filter(game => game !== name);
 
-    usedSpace -= size;
-
-    // Reset original Add button
-    const btn = document.querySelector(
-        `.add-btn[data-game="${name}"]`
-    );
-
-    if(btn){
-        btn.classList.remove("added");
-        btn.textContent = "+ ADD";
-    }
+    // Reload game cards
+if (lowBtn.classList.contains("active")) {
+    loadGames(lowEndGames);
+} else {
+    loadGames(allGames);
+}
 
     // Update everything
     updateStorage();
@@ -1210,9 +1257,15 @@ driveCards.forEach(card => {
 
         // Prevent selecting a drive smaller than current games
         if (usedSpace > newSize) {
-            alert("The selected drive is too small for your current games.");
-            return;
-        }
+
+    showToast(
+        "❌ Drive too small!",
+        "Remove some games or choose a larger drive.",
+        "error"
+    );
+
+    return;
+}
 
         // Remove previous selection
         driveCards.forEach(c => c.classList.remove("selected"));
