@@ -724,8 +724,6 @@ const lowEndGames = [
 
 { name: "AGE OF EMPIRES 2 AGE OF KINGS", genre: ["Strategy"], size: 0.334, img: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png/250px-Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png" },
 
-{ name: "AGE OF EMPIRES 4", genre: ["Strategy"], size: 77, img: "https://upload.wikimedia.org/wikipedia/en/0/08/Age_of_Empires_IV_Cover_Art.png" },
-
 { name: "AGE OF EMPIRES II DEFINITIVE EDITION", genre: ["Strategy"], size: 15, img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQuEJAORLYWCvt9bBKyI4AuEKGFTluZU-0I3SfaSUh1jZExuRDh" },
 
 { name: "ASSASIN’S CREED 4 BLACK FLAG", genre: ["Action", "Adventure"], size: 27, img: "https://m.media-amazon.com/images/M/MV5BOTAzZWQwNjMtMjNmZi00NjJkLWI5MjQtNjA3NDI1NjExMTA4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
