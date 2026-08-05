@@ -442,7 +442,7 @@ const allGames = [
 
 { name: "NBA 2K14", genre: ["Sports"], size: 7.21, img: "https://upload.wikimedia.org/wikipedia/en/8/87/NBA_2K14_cover.jpg" },
 
-{ name: "NBA 2K16", genre: ["Sports"], size: 42.4, img: "https://www.cheatcc.com/wp-content/uploads/2023/05/nba2k16review_boxart.jpg" },
+{ name: "NBA 2K16", genre: ["Sports"], size: 43, img: "https://www.cheatcc.com/wp-content/uploads/2023/05/nba2k16review_boxart.jpg" },
 
 { name: "NBA 2K26 (MODDED FROM 2K23)", genre: ["Sports"], size: 168, img: "https://assets.2k.com/1a6ngf98576c/2QH1PlkhFZ9SQnAhJeAcCr/8c30228f14eceaf5566109d0406d59d8/NBA26_Standard_FOB_425x535.png" },
 
@@ -478,7 +478,7 @@ const allGames = [
 
 { name: "OPERATION FLASHPOINT RED RIVER", genre: ["FPS","Military"], size: 4.56, img: "https://upload.wikimedia.org/wikipedia/en/5/52/Operation_Flashpoint_Red_River_Game_Cover.jpg" },
 
-{ name: "OUTLAST", genre: ["Horror"], size: 5.87, img: "https://upload.wikimedia.org/wikipedia/en/a/aa/Outlast_cover.jpg" },
+{ name: "OUTLAST", genre: ["Horror"], size: 7, img: "https://upload.wikimedia.org/wikipedia/en/a/aa/Outlast_cover.jpg" },
 
 { name: "OUTLAST 2", genre: ["Horror"], size: 25.0, img: "https://www.gamezawy.com/wp-content/uploads/2022/07/outlast2-jpg.webp" },
 
@@ -518,7 +518,7 @@ const allGames = [
 
 { name: "RED DEAD REDEMPTION 2", genre: ["Action","Open World"], size: 119.0, img: "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" },
 
-{ name: "RESIDENT EVIL 2 REMAKE", genre: ["Horror","Survival"], size: 23.8, img: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Resident_Evil_2_Remake.jpg/250px-Resident_Evil_2_Remake.jpg" },
+{ name: "RESIDENT EVIL 2 REMAKE", genre: ["Horror","Survival"], size: 24, img: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Resident_Evil_2_Remake.jpg/250px-Resident_Evil_2_Remake.jpg" },
 
 { name: "RESIDENT EVIL 3 REMAKE", genre: ["Horror","Survival"], size: 23.8, img: "https://upload.wikimedia.org/wikipedia/en/d/dc/Resident_Evil_3.jpg" },
 
@@ -586,13 +586,13 @@ const allGames = [
 
 { name: "SNIPER GHOST WARRIOR CONTRACTS", genre: ["FPS","Tactical"], size: 12.6, img: "https://upload.wikimedia.org/wikipedia/en/7/75/SGWC_cover_art.jpg" },
 
-{ name: "SNIPER GHOST WARRIOR CONTRACTS 2 BUTCHER BANQUET", genre: ["FPS","Tactical"], size: 14.3, img: "https://images.igdb.com/igdb/image/upload/t_1080p/co2nuh.jpg" },
+{ name: "SNIPER GHOST WARRIOR CONTRACTS 2", genre: ["FPS","Tactical"], size: 15, img: "https://images.igdb.com/igdb/image/upload/t_1080p/co2nuh.jpg" },
 
 { name: "SONIC & SEGA ALL STARS RACING", genre: ["Racing","Arcade"], size: 6, img: "https://upload.wikimedia.org/wikipedia/en/1/17/SEGA_Racing.jpg" },
 
 { name: "SPIDER-MAN SHATTERED DIMENSION", genre: ["Action","Superhero"], size: 14, img: "https://upload.wikimedia.org/wikipedia/en/b/b1/Spider-Man_Shattered_Dimensions_cover.jpg" },
 
-{ name: "SPLIT FICTION", genre: ["Co-op","Adventure"], size: 87.8, img: "https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Split_Fiction_cover_art.jpg/250px-Split_Fiction_cover_art.jpg" },
+{ name: "SPLIT FICTION", genre: ["Co-op","Adventure"], size: 88, img: "https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Split_Fiction_cover_art.jpg/250px-Split_Fiction_cover_art.jpg" },
 
 { name: "SPONGEBOB SQUAREPANTS TITANS OF THE TIDE", genre: ["Adventure","Family"], size: 10, img: "https://upload.wikimedia.org/wikipedia/en/a/a4/SpongeBob_SquarePants_Titans_of_the_Tide_cover_art.jpg" },
 
@@ -676,7 +676,7 @@ const allGames = [
 
 { name: "TRANSFORMERS RISE OF THE DARK SPARK", genre: ["Action","TPS"], size: 9, img: "https://upload.wikimedia.org/wikipedia/en/e/ec/Transfromersgame.png" },
 
-{ name: "ULTIMATE MARVEL VS. CAPCOM 3", genre: ["Fighting","Superhero"], size: 3.54, img: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/UMvC3_Cover.jpg/250px-UMvC3_Cover.jpg" },
+{ name: "ULTIMATE MARVEL VS. CAPCOM 3", genre: ["Fighting","Superhero"], size: 4, img: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/UMvC3_Cover.jpg/250px-UMvC3_Cover.jpg" },
 
 { name: "UNCHARTED LEGACY OF THIEVES COLLECTION", genre: ["Action","Adventure"], size: 124, img: "https://owp.klarna.com/product/640x640/3007557856/Uncharted-Legacy-Of-Thieves-Collection-(PC).jpg?ph=true" },
 
@@ -925,7 +925,7 @@ const lowEndGames = [
 
 { name: "TRANSFORMERS RISE OF THE DARK SPARK", genre: ["Action","TPS"], size: 9, img: "https://upload.wikimedia.org/wikipedia/en/e/ec/Transfromersgame.png" },
 
-{ name: "ULTIMATE MARVEL VS. CAPCOM 3", genre: ["Fighting","Superhero"], size: 3.54, img: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/UMvC3_Cover.jpg/250px-UMvC3_Cover.jpg" },
+{ name: "ULTIMATE MARVEL VS. CAPCOM 3", genre: ["Fighting","Superhero"], size: 4, img: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/UMvC3_Cover.jpg/250px-UMvC3_Cover.jpg" },
 
 { name: "WARCRAFT III", genre: ["Strategy","RTS"], size: 1.06, img: "https://upload.wikimedia.org/wikipedia/en/8/87/Warcraftiii-frozen-throne-boxcover.jpg" },
 
