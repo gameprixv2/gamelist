@@ -1,10 +1,15 @@
-// =========================
-// GAMEPRIX V2
-// =========================
+const DRIVE_OPTIONS = {
+  "500": {label:"500GB", usable:460},
+  "1000": {label:"1TB", usable:920},
+  "2000": {label:"2TB", usable:1800}
+};
+let driveKey = "2000";
+let DRIVE_CAPACITY = DRIVE_OPTIONS[driveKey].usable;
+const MESSENGER_URL = "https://m.me/YOUR_GAMEPRIX_PAGE";
+
 
 const allGames = [
-
-{ name: "007 FIRST LIGHT", genre: ["Action"], size: 54, img: "https://upload.wikimedia.org/wikipedia/en/2/2b/007_First_Light_%282026%29_cover.jpg" },
+  { name: "007 FIRST LIGHT", genre: ["Action"], size: 54, img: "https://upload.wikimedia.org/wikipedia/en/2/2b/007_First_Light_%282026%29_cover.jpg" },
 
 { name: "A PLAGUE TALE REQUIEM", genre: ["Action", "Adventure"], size: 48, img: "https://next-media.elkjop.com/image/dv_web_D1800010021388637/597467/a-plague-tale-requiem-pc-windows.jpg?w=640&q=75" },
 
@@ -50,7 +55,7 @@ const allGames = [
 
 { name: "ASSASSIN'S CREED - BROTHERHOOD", genre: ["Action", "Adventure"], size: 9, img: "https://upload.wikimedia.org/wikipedia/en/2/2a/Assassins_Creed_brotherhood_cover.jpg" },
 
-{ name: "ASSASSINS CREED - REVELATIONS", genre: ["Action", "Adventure"], size: 6, img: "https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg" },
+{ name: "ASSASSINS CREED - REVELATIONS", genre: ["Action", "Adventure"], size: 8, img: "https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg" },
 
 { name: "ASSASSIN'S CREED - SYNDICATE", genre: ["Action", "Adventure"], size: 63, img: "https://upload.wikimedia.org/wikipedia/en/f/f2/Assassin%27s_Creed_Syndicate_cover.jpg" },
 
@@ -61,6 +66,8 @@ const allGames = [
 { name: "ASSETTO CORSA COMPETIZIONE", genre: ["Racing", "Simulation"], size: 18, img: "https://upload.wikimedia.org/wikipedia/en/a/aa/Assetto_Corsa_Competizione_cover_art_full.jpg" },
 
 { name: "ATTACK ON TITAN 2", genre: ["Action", "Adventure"], size: 25, img: "https://www.mmoga.com/images/games/_ext/1288947/attack-on-titan-2_large.png" },
+
+{ name: "AVATAR FRONTIERS OF PANDORA ", genre: ["Action", "Open World"], size: 125, img: "https://upload.wikimedia.org/wikipedia/en/5/53/Avatar_Frontiers_of_Pandora_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" },
 
 { name: "AVOWED", genre: ["Action", "RPG"], size: 74, img: "https://upload.wikimedia.org/wikipedia/en/4/4d/Avowed_key_art.jpeg" },
 
@@ -96,6 +103,8 @@ const allGames = [
 
 { name: "BATTLEFIELD HARDLINE", genre: ["Action", "FPS"], size: 39, img: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Battlefield_Hardline.jpg/250px-Battlefield_Hardline.jpg" },
 
+{ name: "BEAST OF REINCARNATION ", genre: ["Action RPG", "Open World"], size: 32, img: "https://upload.wikimedia.org/wikipedia/en/8/8f/Beast_of_Reincarnation_cover_artwork.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" },
+
 { name: "BIG RUMBLE BOXING CREED CHAMPIONS", genre: ["Sports"], size: 8, img: "https://cdn.cdkeys.com/496x700/media/catalog/product/b/i/big_rumble_boxing__creed_champions_pc.jpg" },
 
 { name: "BIOSHOCK 2 REMASTERED", genre: ["Action", "FPS"], size: 17.4, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYdVu1QrRWNd6uFGPhlR7PLK03g5pbZyTzTQ&s" },
@@ -124,15 +133,15 @@ const allGames = [
 
 { name: "CALL OF DUTY MODERN WARFARE III (2023)", size: 53, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/f/f6/MWIII_Cover_Art.png" },
 
-{ name: "CALL OF DUTY 2", size: 3.45, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Call_of_Duty_2_Box.jpg/250px-Call_of_Duty_2_Box.jpg" },
+{ name: "CALL OF DUTY 2", size: 4, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Call_of_Duty_2_Box.jpg/250px-Call_of_Duty_2_Box.jpg" },
 
-{ name: "CALL OF DUTY 5 WORLD AT WAR", size: 6.73, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg" },
+{ name: "CALL OF DUTY 5 WORLD AT WAR", size: 7, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg" },
 
 { name: "CALL OF DUTY ADVANCED WARFARE", size: 43.8, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/3/3b/Advanced_Warfare.jpg" },
 
 { name: "CALL OF DUTY BLACK OPS", size: 11.2, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/0/02/CoD_Black_Ops_cover.png/250px-CoD_Black_Ops_cover.png" },
 
-{ name: "CALL OF DUTY BLACK OPS 6 CAMPAIGN ONLY", size: 48, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png" },
+{ name: "CALL OF DUTY BLACK OPS 6 CAMPAIGN ONLY", size: 49, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png" },
 
 { name: "CALL OF DUTY - BLACK OPS 2", size: 22.2, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Call_of_Duty_Black_Ops_II_box_artwork.png/250px-Call_of_Duty_Black_Ops_II_box_artwork.png" },
 
@@ -179,6 +188,8 @@ const allGames = [
 { name: "COUNTER STRIKE XTREME", size: 2.12, genre: ["FPS","Multiplayer"], img: "https://2img.net/h/www.fullprogramlarindir.com/wp-content/uploads/2014/05/Counter-Strike-Xtreme-V6-2011-Cover.jpg" },
 
 { name: "CRASH BANDICOOT 4", genre: ["Platformer", "Adventure"], size: 23.3, img: "https://upload.wikimedia.org/wikipedia/en/3/39/Crash_Bandicoot_4_Box_Art.jpeg" },
+
+{ name: "CRIMSON DESERT DELUXE EDITION ", genre: ["Action", "RPG", "Open World"], size: 131, img: "https://upload.wikimedia.org/wikipedia/en/7/73/Crimson_Desert_Steam_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" },
 
 { name: "CRYSIS 3 REMASTERED", genre: ["FPS", "Action"], size: 18.0, img: "https://store-images.s-microsoft.com/image/apps.47687.14224226440896945.9b286b99-0293-4c31-9568-1be6d21203a4.337618c2-8e74-4e4f-9881-87bf6a2d2067" },
 
@@ -278,13 +289,13 @@ const allGames = [
 
 { name: "FINAL FANTASY VII REBIRTH", genre: ["RPG", "Fantasy"], size: 153, img: "https://upload.wikimedia.org/wikipedia/en/7/75/Boxart_for_Final_Fantasy_VII_Rebirth.png" },
 
-{ name: "FINAL FANTASY XIII", genre: ["RPG", "Fantasy"], size: 57.6, img: "https://upload.wikimedia.org/wikipedia/en/4/47/Final_Fantasy_XIII_EU_box_art.jpg" },
+{ name: "FINAL FANTASY XIII", genre: ["RPG", "Fantasy"], size: 58, img: "https://upload.wikimedia.org/wikipedia/en/4/47/Final_Fantasy_XIII_EU_box_art.jpg" },
 
-{ name: "FINAL FANTASY XV WINDOWS EDITION", genre: ["RPG", "Fantasy"], size: 98, img: "https://static.driffle.com/fit-in/720x512/media-gallery/prod/166937787623599000_final-fantasy-xv-we.webp" },
+{ name: "FINAL FANTASY XV WINDOWS EDITION", genre: ["RPG", "Fantasy"], size: 84, img: "https://static.driffle.com/fit-in/720x512/media-gallery/prod/166937787623599000_final-fantasy-xv-we.webp" },
 
 { name: "FINAL FANTASY XVI", genre: ["RPG", "Fantasy"], size: 156.0, img: "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/Final_Fantasy_XVI_cover_art.png/250px-Final_Fantasy_XVI_cover_art.png" },
 
-{ name: "FIVE NIGHTS AT FREDDY'S 4", genre: ["Horror"], size: 0.993, img: "https://newzoo.com/wp-content/uploads/api/games/artworks/game--five-nights-at-freddys-4.jpg" },
+{ name: "FIVE NIGHTS AT FREDDY'S 4", genre: ["Horror"], size: 1.04, img: "https://newzoo.com/wp-content/uploads/api/games/artworks/game--five-nights-at-freddys-4.jpg" },
 
 { name: "FORZA HORIZON 5", genre: ["Racing"], size: 133.0, img: "https://upload.wikimedia.org/wikipedia/en/8/86/Forza_Horizon_5_cover_art.jpg" },
 
@@ -400,7 +411,7 @@ const allGames = [
 
 { name: "MEDAL OF HONOR", genre: ["FPS","War"], size: 4.84, img: "https://upload.wikimedia.org/wikipedia/en/b/ba/Medal_of_Honor_2010_Box_art.jpg" },
 
-{ name: "MEDAL OF HONOR AIRBORNE", genre: ["FPS","War"], size: 3.94, img: "https://upload.wikimedia.org/wikipedia/en/f/fa/MoH_Airborne_cover_PC_DVD.jpg" },
+{ name: "MEDAL OF HONOR AIRBORNE", genre: ["FPS","War"], size: 11, img: "https://upload.wikimedia.org/wikipedia/en/f/fa/MoH_Airborne_cover_PC_DVD.jpg" },
 
 { name: "MEDAL OF HONOR ALLIED ASSAULT WAR CHEST", genre: ["FPS","War"], size: 2.52, img: "https://media.s-bol.com/BRXgyk44ABko/N91wNL2/550x783.jpg" },
 
@@ -488,7 +499,7 @@ const allGames = [
 
 { name: "PALWORLD", genre: ["Survival","Open World"], size: 39, img: "https://upload.wikimedia.org/wikipedia/en/f/fb/Palworld_Steam_artwork.jpg" },
 
-{ name: "PAYDAY 2", genre: ["FPS","Co-op"], size: 18.4, img: "https://upload.wikimedia.org/wikipedia/en/7/7b/Payday2cover.jpg" },
+{ name: "PAYDAY 2", genre: ["FPS","Co-op"], size: 88, img: "https://upload.wikimedia.org/wikipedia/en/7/7b/Payday2cover.jpg" },
 
 { name: "PERSONA 5 STRIKERS", genre: ["RPG","Action"], size: 23.8, img: "https://upload.wikimedia.org/wikipedia/en/6/6e/Persona_5_Scramble.jpg" },
 
@@ -568,7 +579,7 @@ const allGames = [
 
 { name: "SIFU", genre: ["Action","Martial Arts"], size: 31, img: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138710/header.jpg?t=1754555101" },
 
-{ name: "SILENT HILL 2 REMAKE", genre: ["Horror","Survival"], size: 34.7, img: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Silent_Hill_2_remake_cover.jpg/250px-Silent_Hill_2_remake_cover.jpg" },
+{ name: "SILENT HILL 2 REMAKE", genre: ["Horror","Survival"], size: 35, img: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Silent_Hill_2_remake_cover.jpg/250px-Silent_Hill_2_remake_cover.jpg" },
 
 { name: "SILENT HILL 3", genre: ["Horror","Survival"], size: 5.07, img: "https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Sh3_boxart.jpg/250px-Sh3_boxart.jpg" },
 
@@ -612,7 +623,7 @@ const allGames = [
 
 { name: "STORY OF SEASONS GRAND BAZAAR", genre: ["Simulation","Farming"], size: 7.67, img: "https://cdn.dekudeals.com/images/e686894cb7a726dacc9ddcbef0b1ec1c33d80f47/w500.jpg" },
 
-{ name: "STRAY", genre: ["Adventure","Puzzle"], size: 6.21, img: "https://upload.wikimedia.org/wikipedia/en/f/f1/Stray_cover_art.jpg" },
+{ name: "STRAY", genre: ["Adventure","Puzzle"], size: 7, img: "https://upload.wikimedia.org/wikipedia/en/f/f1/Stray_cover_art.jpg" },
 
 { name: "STREET FIGHTER V", genre: ["Fighting"], size: 54.1, img: "https://upload.wikimedia.org/wikipedia/en/8/80/Street_Fighter_V_box_artwork.png" },
 
@@ -648,7 +659,7 @@ const allGames = [
 
 { name: "THE LORD OF THE RINGS WAR IN THE NORTH", genre: ["Action","RPG"], size: 7.08, img: "https://upload.wikimedia.org/wikipedia/en/c/c2/LOTR_War_in_the_North.png" },
 
-{ name: "THE SIMS 4 (LIFE & DEATH EXPANSION COMPLETE)", genre: ["Simulation","Life"], size: 66.3, img: "https://static.electronicfirst.com/products/thumbnail_1748502161_683806915ce7a.webp" },
+{ name: "THE SIMS 4", genre: ["Simulation","Life"], size: 67, img: "https://static.electronicfirst.com/products/thumbnail_1748502161_683806915ce7a.webp" },
 
 { name: "THE WITCHER 2: ASSASIN OF KINGS ENHANCED EDITION", genre: ["RPG","Fantasy"], size: 19.7, img: "https://upload.wikimedia.org/wikipedia/en/4/40/Witcher_2_cover.jpg" },
 
@@ -660,7 +671,7 @@ const allGames = [
 
 { name: "TOM CLANCY’S SPLINTER CELL DOUBLE AGENT", genre: ["Stealth","Action"], size: 9.86, img: "https://upload.wikimedia.org/wikipedia/en/1/1e/Scda_boxart.jpg" },
 
-{ name: "TOM CLANCY'S GHOST RECON – WILDLANDS", genre: ["TPS","Open World"], size: 64.4, img: "https://upload.wikimedia.org/wikipedia/en/b/b9/Ghost_Recon_Wildlands_cover_art.jpg" },
+{ name: "TOM CLANCY'S GHOST RECON WILDLANDS WITH DLC", genre: ["TPS","Open World"], size: 87, img: "https://upload.wikimedia.org/wikipedia/en/b/b9/Ghost_Recon_Wildlands_cover_art.jpg" },
 
 { name: "TOM CLANCYS GHOST RECON FUTURE SOLDIER", genre: ["TPS","Tactical"], size: 14.1, img: "https://upload.wikimedia.org/wikipedia/en/c/c4/Tom_Clancy_Ghost_Recon_Future_Soldier_Game_Cover.jpg" },
 
@@ -694,7 +705,7 @@ const allGames = [
 
 { name: "VIRTUA.FIGHTER.5.R.E.V.O", genre: ["Fighting"], size: 21.5, img: "https://cdn.sega.co.uk/mhc-sega/public/styles/1280/public/content/media/images/raster/vf5revo_vertical_cover.jpg.webp?itok=2mZE2zf7" },
 
-{ name: "WARCRAFT III", genre: ["Strategy","RTS"], size: 1.06, img: "https://upload.wikimedia.org/wikipedia/en/8/87/Warcraftiii-frozen-throne-boxcover.jpg" },
+{ name: "WARCRAFT III", genre: ["Strategy","RTS"], size: 2, img: "https://upload.wikimedia.org/wikipedia/en/8/87/Warcraftiii-frozen-throne-boxcover.jpg" },
 
 { name: "WARHAMMER 40,000: MECHANICUS II", genre: ["Strategy","Turn-Based"], size: 19, img: "https://upload.wikimedia.org/wikipedia/en/1/1e/Warhammer_40%2C000_Mechanicus_II.png" },
 
@@ -706,7 +717,7 @@ const allGames = [
 
 { name: "WATCH DOGS LEGION", genre: ["Action","Open World"], size: 110.0, img: "https://upload.wikimedia.org/wikipedia/en/d/dc/Watch_Dogs_Legion_cover_art.webp" },
 
-{ name: "WO LONG FALLEN DIGITAL DELUXE EDITION", genre: ["Action","Soulslike"], size: 45.4, img: "https://upload.wikimedia.org/wikipedia/en/c/c6/Wo_Long_Fallen_Dynasty_cover.jpeg" },
+{ name: "WO LONG FALLEN DYNASTY", genre: ["Action","Soulslike"], size: 60, img: "https://upload.wikimedia.org/wikipedia/en/c/c6/Wo_Long_Fallen_Dynasty_cover.jpeg" },
 
 { name: "WOLFENSTEIN THE NEW ORDER", genre: ["FPS","Action"], size: 43.4, img: "https://upload.wikimedia.org/wikipedia/en/9/95/Wolfenstein_The_New_Order_cover.jpg" },
 
@@ -723,8 +734,7 @@ const allGames = [
 ];
 
 const lowEndGames = [
-
-{ name: "AGE OF EMPIRES 2 AGE OF KINGS", genre: ["Strategy"], size: 0.334, img: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png/250px-Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png" },
+  { name: "AGE OF EMPIRES 2 AGE OF KINGS", genre: ["Strategy"], size: 0.334, img: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png/250px-Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png" },
 
 { name: "AGE OF EMPIRES II DEFINITIVE EDITION", genre: ["Strategy"], size: 15, img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQuEJAORLYWCvt9bBKyI4AuEKGFTluZU-0I3SfaSUh1jZExuRDh" },
 
@@ -738,7 +748,7 @@ const lowEndGames = [
 
 { name: "ASSASSIN'S CREED - BROTHERHOOD", genre: ["Action", "Adventure"], size: 9, img: "https://upload.wikimedia.org/wikipedia/en/2/2a/Assassins_Creed_brotherhood_cover.jpg" },
 
-{ name: "ASSASSINS CREED - REVELATIONS", genre: ["Action", "Adventure"], size: 6, img: "https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg" },
+{ name: "ASSASSINS CREED - REVELATIONS", genre: ["Action", "Adventure"], size: 8, img: "https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg" },
 
 { name: "BALDUR'S GATE 2 - ENHANCED EDITION", genre: ["RPG"], size: 4, img: "https://upload.wikimedia.org/wikipedia/en/b/b4/BGIIEE_cover_art.jpg" },
 
@@ -758,9 +768,9 @@ const lowEndGames = [
 
 { name: "BULLY SCHOLARSHIP EDITION", size: 4.83, genre: ["Action","Adventure"], img: "https://gamegator.net/_next/image?url=https%3A%2F%2Fimages.gamegator.net%2Fco2gvl&w=384&q=75" },
 
-{ name: "CALL OF DUTY 2", size: 3.45, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Call_of_Duty_2_Box.jpg/250px-Call_of_Duty_2_Box.jpg" },
+{ name: "CALL OF DUTY 2", size: 4, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Call_of_Duty_2_Box.jpg/250px-Call_of_Duty_2_Box.jpg" },
 
-{ name: "CALL OF DUTY 5 WORLD AT WAR", size: 6.73, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg" },
+{ name: "CALL OF DUTY 5 WORLD AT WAR", size: 7, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg" },
 
 { name: "CALL OF DUTY BLACK OPS", size: 11.2, genre: ["FPS","Action"], img: "https://upload.wikimedia.org/wikipedia/en/thumb/0/02/CoD_Black_Ops_cover.png/250px-CoD_Black_Ops_cover.png" },
 
@@ -832,7 +842,7 @@ const lowEndGames = [
 
 { name: "MEDAL OF HONOR", genre: ["FPS","War"], size: 4.84, img: "https://upload.wikimedia.org/wikipedia/en/b/ba/Medal_of_Honor_2010_Box_art.jpg" },
 
-{ name: "MEDAL OF HONOR AIRBORNE", genre: ["FPS","War"], size: 3.94, img: "https://upload.wikimedia.org/wikipedia/en/f/fa/MoH_Airborne_cover_PC_DVD.jpg" },
+{ name: "MEDAL OF HONOR AIRBORNE", genre: ["FPS","War"], size: 11, img: "https://upload.wikimedia.org/wikipedia/en/f/fa/MoH_Airborne_cover_PC_DVD.jpg" },
 
 { name: "MEDAL OF HONOR ALLIED ASSAULT WAR CHEST", genre: ["FPS","War"], size: 2.52, img: "https://media.s-bol.com/BRXgyk44ABko/N91wNL2/550x783.jpg" },
 
@@ -864,7 +874,7 @@ const lowEndGames = [
 
 { name: "OPERATION FLASHPOINT RED RIVER", genre: ["FPS","Military"], size: 4.56, img: "https://upload.wikimedia.org/wikipedia/en/5/52/Operation_Flashpoint_Red_River_Game_Cover.jpg" },
 
-{ name: "PAYDAY 2", genre: ["FPS","Co-op"], size: 18.4, img: "https://upload.wikimedia.org/wikipedia/en/7/7b/Payday2cover.jpg" },
+{ name: "PAYDAY 2", genre: ["FPS","Co-op"], size: 88, img: "https://upload.wikimedia.org/wikipedia/en/7/7b/Payday2cover.jpg" },
 
 { name: "PLANTS VS ZOMBIES", genre: ["Strategy","Tower Defense"], size: 0.0831, img: "https://upload.wikimedia.org/wikipedia/en/9/9c/PlantsvsZombiesCoverArt.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" },
 
@@ -888,8 +898,6 @@ const lowEndGames = [
 
 { name: "SILENT HILL 4 NEW EDITION", genre: ["Horror","Survival"], size: 3.63, img: "https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Silent2002.jpg/250px-Silent2002.jpg" },
 
-{ name: "SILENT HILL F", genre: ["Horror","Survival"], size: 47.9, img: "https://img.game8.co/4130881/2b19ba68655d60ad2879409fdc168678.png/show" },
-
 { name: "SILENT HILL HOMECOMING", genre: ["Horror","Survival"], size: 8.18, img: "https://upload.wikimedia.org/wikipedia/en/f/f1/Silent_Hill_Homecoming.jpg" },
 
 { name: "SLEEPING DOGS DEFINITIVE EDITION", genre: ["Action","Open World"], size: 16.5, img: "https://store-images.s-microsoft.com/image/apps.27657.69516029925336975.e3cb0155-71cd-4799-bed4-63da86cce109.61267421-c294-418d-98ad-81f696989b4f" },
@@ -908,7 +916,7 @@ const lowEndGames = [
 
 { name: "THE LORD OF THE RINGS WAR IN THE NORTH", genre: ["Action","RPG"], size: 7.08, img: "https://upload.wikimedia.org/wikipedia/en/c/c2/LOTR_War_in_the_North.png" },
 
-{ name: "THE SIMS 4 (LIFE & DEATH EXPANSION COMPLETE)", genre: ["Simulation","Life"], size: 66.3, img: "https://static.electronicfirst.com/products/thumbnail_1748502161_683806915ce7a.webp" },
+{ name: "THE SIMS 4", genre: ["Simulation","Life"], size: 67, img: "https://static.electronicfirst.com/products/thumbnail_1748502161_683806915ce7a.webp" },
 
 { name: "THE WITCHER 2: ASSASIN OF KINGS ENHANCED EDITION", genre: ["RPG","Fantasy"], size: 19.7, img: "https://upload.wikimedia.org/wikipedia/en/4/40/Witcher_2_cover.jpg" },
 
@@ -920,7 +928,6 @@ const lowEndGames = [
 
 { name: "TOM CLANCYS SPLINTER CELL CONVICTION", genre: ["Stealth","Action"], size: 6.91, img: "https://upload.wikimedia.org/wikipedia/en/7/7f/Tom_Clancy%27s_Splinter_Cell_Conviction.jpg" },
 
-
 { name: "TOTAL WAR ROME II EMPEROR EDITION", genre: ["Strategy","RTS"], size: 33.4, img: "https://i.ebayimg.com/images/g/KGEAAOSwFnJgT5-7/s-l1200.jpg" },
 
 { name: "TOTAL WAR ROME II RISE OF THE REPUBLIC", genre: ["Strategy","RTS"], size: 33.3, img: "https://www.mmoga.com/images/games/_ext/1102937/total-war-rome-2-rise-of-the-republic-dlc_large.png" },
@@ -931,393 +938,217 @@ const lowEndGames = [
 
 { name: "ULTIMATE MARVEL VS. CAPCOM 3", genre: ["Fighting","Superhero"], size: 4, img: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/UMvC3_Cover.jpg/250px-UMvC3_Cover.jpg" },
 
-{ name: "WARCRAFT III", genre: ["Strategy","RTS"], size: 1.06, img: "https://upload.wikimedia.org/wikipedia/en/8/87/Warcraftiii-frozen-throne-boxcover.jpg" },
+{ name: "WARCRAFT III", genre: ["Strategy","RTS"], size: 2, img: "https://upload.wikimedia.org/wikipedia/en/8/87/Warcraftiii-frozen-throne-boxcover.jpg" },
 
 { name: "YU-GI-OH LEGACY OF THE DUELIST LINK EVOLUTION", genre: ["Card Game","Strategy"], size: 1.52, img: "https://m.media-amazon.com/images/M/MV5BMDM5MTAyNDAtMThhOS00ZDhjLWEzN2MtOTY0ODI2NmZlM2YxXkEyXkFqcGc@._V1_.jpg" },
 
 
 ];
 
-const gameGrid=document.getElementById("gameGrid");
+const games = [...allGames.map((g,i)=>({
+  id:"all-"+i,
+  name:g.name,
+  size:g.size,
+  tags:g.genre,
+  low:false,
+  img:g.img
+})), ...lowEndGames.map((g,i)=>({
+  id:"low-"+i,
+  name:g.name,
+  size:g.size,
+  tags:g.genre,
+  low:true,
+  img:g.img
+}))];
 
-function loadGames(gameList){
+// Remove duplicate entries from the All Games tab while keeping the first occurrence.
+const uniqueAllGames = [];
+const seenNames = new Set();
+for (const g of games.filter(g=>!g.low)) {
+  const key = g.name.trim().toLowerCase();
+  if (!seenNames.has(key)) {
+    seenNames.add(key);
+    uniqueAllGames.push(g);
+  }
+}
+const uniqueLowEndGames = games.filter(g=>g.low);
 
-    gameGrid.innerHTML="";
+let mode="all";
+let selected=[];
 
-    gameList.forEach(game=>{
+const $=id=>document.getElementById(id);
 
-        const card=document.createElement("div");
+function render(){
+  const q=$("searchInput").value.trim().toLowerCase();
+  const source = mode==="all" ? uniqueAllGames : uniqueLowEndGames;
+  const list=source.filter(g=>{
+    const searchOK=!q || g.name.toLowerCase().includes(q) || g.tags.some(t=>t.toLowerCase().includes(q));
+    return searchOK;
+  });
 
-        card.className="game-card";
+  $("gameGrid").innerHTML=list.length?list.map(g=>{
+    const added=selected.includes(g.id);
+    return `<article class="card">
+      <div class="card-media" style="--cover:url("${g.img.replace(/"/g, '%22')}")">
+        ${g.new ? '<span class="new-badge">🔥 NEW</span>' : ''}
+        <img class="card-img" src="${g.img}" alt="${escapeHtml(g.name)}" onerror="this.style.opacity='0'">
+      </div>
+      <div class="card-body">
+        <div class="card-title">${escapeHtml(g.name)}</div>
+        <div class="tags">${g.tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join("")}</div>
+        <div class="size"><span class="size-icon">▰</span>${g.size} GB</div>
+        <button class="add-btn ${added?"selected":""}" onclick="toggleGame('${g.id}')">${added?"✓ ADDED":"+ ADD"}</button>
+      </div>
+    </article>`;
+  }).join(""):`<div class="empty" style="grid-column:1/-1">No games found.</div>`;
 
-        if (selectedGames.includes(game.name)) {
-             card.classList.add("added");
-        }
+  updateDrive();
+}
 
-        card.dataset.game=game.name;
-        card.dataset.size=game.size;
+function totalUsed(){
+  return selected.reduce((n,id)=>n+(games.find(g=>g.id===id)?.size||0),0);
+}
 
-        card.innerHTML=`
-
-<img src="${game.img}">
-
-<div class="game-info">
-
-<h3>${game.name}</h3>
-
-<div class="genres">
-
-${game.genre.map(g=>`<span>${g}</span>`).join("")}
-
-</div>
-
-<p class="size">${game.size} GB</p>
-
-</div>
-
-`;
-
-card.addEventListener("click", function(){
-
-    const size = Number(this.dataset.size);
-    const name = this.dataset.game;
-
-    if(this.classList.contains("added")){
-
-    this.classList.remove("added");
-
-    selectedGames = selectedGames.filter(g => g !== name);
-
-}else{
-
-    if(usedSpace + size > driveSize){
-
-        showToast(
-    "❌ Not enough storage!",
-    "Choose a larger drive or remove some games.",
-    "error"
-);
-
-console.log("Storage limit reached");
-return;
-
+function toggleGame(id){
+  if(selected.includes(id)){
+    selected=selected.filter(x=>x!==id);
+    toast("Game removed");
+  }else{
+    const game=games.find(g=>g.id===id);
+    if(totalUsed()+game.size>DRIVE_CAPACITY){
+      toast(`Not enough space on the ${DRIVE_OPTIONS[driveKey].label} drive`);
+      return;
     }
-
-    this.classList.add("added");
-
-    selectedGames.push(name);
-
+    selected.push(id);
+    toast(`${game.name} added`);
+  }
+  render();
 }
 
-    updateStorage();
+function updateDrive(){
+  const used=totalUsed();
+  const remaining=DRIVE_CAPACITY-used;
+  const pct=(used/DRIVE_CAPACITY)*100;
+  $("used").textContent=`${used.toFixed(1)} GB`;
+  $("remaining").textContent=`${remaining.toFixed(1)} GB`;
+  $("gamesAdded").textContent=selected.length;
+  $("selectedCount").textContent=selected.length;
+  $("progress").style.width=`${pct}%`;
+  $("percent").textContent=`${pct.toFixed(1).replace(".0","")}%`;
 
-});
-
-        gameGrid.appendChild(card);
-
-    });
-
+  if($("stickyDriveLabel")) $("stickyDriveLabel").textContent=DRIVE_OPTIONS[driveKey].label;
+  if($("stickyGames")) $("stickyGames").textContent=`${selected.length} GAME${selected.length===1?"":"S"}`;
+  if($("stickyUsed")) $("stickyUsed").textContent=`${used.toFixed(1)} GB`;
+  if($("stickyProgress")) $("stickyProgress").style.width=`${pct}%`;
 }
 
-const allBtn = document.getElementById("allBtn");
-const lowBtn = document.getElementById("lowBtn");
+function openSelected(){
+  const used=totalUsed();
+  $("sheetSummary").textContent=`${selected.length} GAMES • ${used} GB / ${DRIVE_OPTIONS[driveKey].label}`;
+  $("sheetUsed").textContent=`${used} GB`;
+  $("sheetRemaining").textContent=`${DRIVE_CAPACITY-used} GB`;
+  if($("sheetDrive")) $("sheetDrive").textContent=DRIVE_OPTIONS[driveKey].label;
 
-allBtn.classList.add("active");
-
-allBtn.addEventListener("click", () => {
-
-    allBtn.classList.add("active");
-    lowBtn.classList.remove("active");
-
-    document.getElementById("gameTitle").textContent = "All Games";
-
-    loadGames(allGames);
-
-});
-
-lowBtn.addEventListener("click", () => {
-
-    lowBtn.classList.add("active");
-    allBtn.classList.remove("active");
-
-    document.getElementById("gameTitle").textContent = "Low End Games";
-    loadGames(lowEndGames);
-
-});
-
-// ===============================
-// STORAGE SYSTEM
-// ===============================
-
-let driveSize = 1850;
-let usedSpace = 0;
-let selectedGames = [];
-
-// ===============================
-// TOAST NOTIFICATION
-// ===============================
-
-const toast = document.getElementById("toast");
-
-function showToast(message, sub = "", type = "success"){
-
-    // Reset previous classes
-    toast.className = "toast";
-
-    // Add success or error class
-    toast.classList.add(type);
-
-    toast.innerHTML = `
-        ${message}
-        <small>${sub}</small>
-    `;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
-
+  if(!selected.length){
+    $("selectedList").innerHTML=`<div class="empty"><div style="font-size:30px">🎮</div><br><b style="color:#fff">No games selected yet.</b><br>Add games from All Games or Low End PC Games.</div>`;
+  }else{
+    $("selectedList").innerHTML=selected.map(id=>{
+      const g=games.find(x=>x.id===id);
+      return `<div class="selected-item">
+        <img src="${g.img}" alt="">
+        <div><strong>${escapeHtml(g.name)}</strong><small>${g.tags.join(" • ")}</small></div>
+        <span class="selected-size">${g.size} GB</span>
+        <button class="remove" onclick="removeSelected('${g.id}')">✕</button>
+      </div>`;
+    }).join("");
+  }
+  $("selectedModal").classList.add("open");
 }
 
-const usedSpaceText = document.getElementById("usedSpace");
-const remainingText = document.getElementById("remainingSpace");
-const gameCountText = document.getElementById("gameCount");
-
-function updateStorage(){
-
-
-    const list = document.getElementById("selectedList");
-
-    list.innerHTML = "";
-
-    let total = 0;
-
-    selectedGames.forEach(name=>{
-
-        const game = allGames.find(g=>g.name===name);
-
-        if(!game) return;
-
-        total += game.size;
-
-        list.innerHTML += `
-<div class="selected-item">
-
-    <span>🎮 ${game.name}</span>
-
-    <strong>${game.size} GB</strong>
-
-    <button class="remove-btn"
-    data-name="${game.name}"
-    data-size="${game.size}">
-    ✕
-
-</button>
-
-</div>
-`;
-
-    });
-
-    usedSpace = total;
-
-const remaining = driveSize - usedSpace;
-
-const usedPercent = driveSize > 0
-    ? (usedSpace / driveSize) * 100
-    : 0;
-
-const remainingPercent = 100 - usedPercent;
-
-document.getElementById("usedPercent").textContent =
-    usedPercent.toFixed(0) + "%";
-
-document.getElementById("remainingPercent").textContent =
-    remainingPercent.toFixed(0) + "%";
-
-usedSpaceText.textContent = usedSpace.toFixed(1) + " GB";
-remainingText.textContent = remaining.toFixed(1) + " GB";
-gameCountText.textContent = selectedGames.length;
-
-    document.getElementById("popupTotal").textContent = total + "GB";
+function removeSelected(id){
+  selected=selected.filter(x=>x!==id);
+  render();
+  openSelected();
 }
 
-updateStorage();
+function buildOrder(){
+  const used=totalUsed();
+  const remaining=DRIVE_CAPACITY-used;
+  const lines=selected.map((id,i)=>{
+    const g=games.find(x=>x.id===id);
+    return `${i+1}. ${g.name} — ${g.size} GB`;
+  });
+  return [
+    "🎮 GAMEPRIX GAME ORDER",
+    "━━━━━━━━━━━━━━━━━━━━",
+    "",
+    `💽 DRIVE: ${DRIVE_OPTIONS[driveKey].label}`,
+    "",
+    "🎮 SELECTED GAMES",
+    ...lines,
+    "",
+    "━━━━━━━━━━━━━━━━━━━━",
+    `💾 TOTAL: ${used} GB`,
+    `📦 REMAINING: ${remaining} GB`,
+    "",
+    "Please confirm my order. Thank you!"
+  ].join("\n");
+}
 
+async function copyOrder(){
+  if(!selected.length){toast("Please add at least one game");return;}
+  const text=buildOrder();
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch{
+    const ta=document.createElement("textarea");
+    ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();
+  }
+  toast("Order copied! Opening Messenger...");
+  setTimeout(()=>window.open(MESSENGER_URL,"_blank","noopener,noreferrer"),450);
+}
 
-// ===============================
-// SELECTED GAMES POPUP
-// ===============================
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+function toast(message){
+  $("toast").textContent=message;
+  $("toast").classList.add("show");
+  clearTimeout(window.__toast);
+  window.__toast=setTimeout(()=>$("toast").classList.remove("show"),2200);
+}
 
-const popup = document.getElementById("selectedPopup");
-const openPopup = document.getElementById("selectedGamesBtn");
-const closePopup = document.getElementById("closePopup");
-
-openPopup.addEventListener("click",()=>{
-
-    popup.style.display="flex";
-
-});
-
-closePopup.addEventListener("click",()=>{
-
-    popup.style.display="none";
-
-});
-
-// ===============================
-// COPY TO CLIPBOARD
-// ===============================
-
-const copyBtn = document.getElementById("copyBtn");
-
-copyBtn.addEventListener("click", () => {
-
-console.log("Copy button clicked");
-
-    let message = "";
-message += "🎮 GAMEPRIX GAME ORDER\n";
-message += "━━━━━━━━━━━━━━━━━━━━\n\n";
-
-message += "💽 Drive\n";
-message += document.getElementById("selectedDrive").textContent + " (";
-message += driveSize + "GB usable)\n\n";
-
-message += "🎮 Selected Games\n\n";
-
-selectedGames.forEach((name,index)=>{
-
-    const game = allGames.find(g=>g.name===name);
-
-    if(game){
-        message += (index+1) + ". " + game.name + " — " + game.size + " GB\n";
+document.querySelectorAll(".drive-option").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const next=btn.dataset.drive;
+    const newCapacity=DRIVE_OPTIONS[next].usable;
+    if(totalUsed()>newCapacity){
+      toast("This drive is too small for your selected games");
+      return;
     }
-
-});
-message += "━━━━━━━━━━━━━━━━━━━━\n";
-message += "📦 Total Size: " + usedSpace + " GB\n\n";
-message += "Thank you for choosing GamePrix!\n";
-message += "Please send this message to our Facebook Page.";
-
-    navigator.clipboard.writeText(message)
-.then(() => {
-
-    showToast(
-        "✅ Order copied!",
-        "Open Messenger and paste your order."
-    );
-
-})
-.catch(err => {
-
-    console.error(err);
-
-    showToast(
-        "❌ Copy failed!",
-        "Clipboard is unavailable.",
-        "error"
-    );
-
-});
+    document.querySelectorAll(".drive-option").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    driveKey=next;
+    DRIVE_CAPACITY=newCapacity;
+    document.querySelector(".drive-badge").textContent=DRIVE_OPTIONS[next].label;
+    render();
+  });
 });
 
-// ===============================
-// REMOVE GAME FROM POPUP
-// ===============================
-
-document.addEventListener("click", function(e){
-
-    if(!e.target.classList.contains("remove-btn")) return;
-
-    const name = e.target.dataset.name;
-
-    // Remove from selected list
-    selectedGames = selectedGames.filter(game => game !== name);
-
-    // Reload game cards
-if (lowBtn.classList.contains("active")) {
-    loadGames(lowEndGames);
-} else {
-    loadGames(allGames);
-}
-
-    // Update everything
-    updateStorage();
-
+document.querySelectorAll(".mode").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".mode").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    mode=btn.dataset.mode;
+    render();
+  });
 });
+$("searchInput").addEventListener("input",render);
+$("viewSelected").addEventListener("click",openSelected);
+if($("stickyView")) $("stickyView").addEventListener("click",openSelected);
+$("closeModal").addEventListener("click",()=>$("selectedModal").classList.remove("open"));
+$("selectedModal").addEventListener("click",e=>{if(e.target.id==="selectedModal")$("selectedModal").classList.remove("open")});
+$("addMore").addEventListener("click",()=>$("selectedModal").classList.remove("open"));
+$("copyOrder").addEventListener("click",copyOrder);
 
-// ===============================
-// DRIVE SELECTOR
-// ===============================
-
-const driveCards = document.querySelectorAll(".drive-card");
-
-driveCards.forEach(card => {
-
-    card.addEventListener("click", () => {
-
-        const newSize = Number(card.dataset.size);
-
-        // Prevent selecting a drive smaller than current games
-        if (usedSpace > newSize) {
-
-    showToast(
-        "❌ Drive too small!",
-        "Remove some games or choose a larger drive.",
-        "error"
-    );
-
-    return;
-}
-
-        // Remove previous selection
-        driveCards.forEach(c => c.classList.remove("selected"));
-
-        // Highlight selected drive
-        card.classList.add("selected");
-
-        // Update storage size
-        driveSize = newSize;
-
-        // Update bottom bar
-        document.getElementById("selectedDrive").textContent =
-            card.dataset.label;
-
-        updateStorage();
-
-    });
-
-});
-
-
-// ===============================
-// SEARCH GAMES
-// ===============================
-
-const searchInput = document.getElementById("search");
-
-searchInput.addEventListener("keyup", function () {
-
-    const keyword = this.value.toLowerCase();
-
-    document.querySelectorAll(".game-card").forEach(card => {
-
-        const title = card.querySelector("h3").textContent.toLowerCase();
-
-        if (title.includes(keyword)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-});
-
-
-loadGames(allGames);
-
-
-
-
+render();
